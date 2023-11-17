@@ -1,0 +1,325 @@
+@font-face {
+    font-family: josefin;
+    src: url('./Josefin.ttf');
+}
+@font-face {
+    font-family: dancing;
+    src: url('./dancing.ttf');
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backgrAppear {
+    from {
+        background-image: url(/src/img/academy3.jpg)
+    }
+
+    to {
+        background-image: url(/src/img/backgr1.jpg);
+    }
+}
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*index.js*/
+body,
+html,
+#content {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.back {
+    background-image: url(/src/img/backgr1.jpg);
+    background-size: cover;
+    height: 100%;
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+    animation: backgrAppear 2s;
+}
+
+#content {
+    display: grid;
+    grid-template-rows: 1fr 6fr 0.4fr;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.heading {
+    grid-row: 1 / 2;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid rgb(227, 180, 93);
+    gap: .5rem;
+    animation: appear 3s;
+    /*background-color: rgb(242, 182, 77);
+    /*opacity: 0.5;*/
+}
+
+.footer {
+    grid-row: 3 / 4;
+    background-color: rgb(0, 0, 0, 0.6);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    animation: appear 3s;
+}
+
+.section,
+.active {
+    flex: 0 0 auto;
+    font-size: 1.3rem;
+    font-weight: 600;    
+    text-transform: uppercase;
+    padding: 1.2rem;
+    transition: transform 0.7s, border-bottom 0.3s;
+}
+
+.active {
+    border-bottom: 2px solid rgb(227, 180, 93);
+}
+
+.section:hover {
+    transform: translateY(-.3rem);
+    border-bottom: 2px solid rgb(227, 180, 93);
+}
+
+.mainContent {
+    grid-row: 2 / 3;
+    overflow-y: hidden;
+}
+
+/*.backgr {
+    background-color: black;
+    grid-row: 2 / 3;
+    position: absolute;
+    animation: backgrTransition 0.9s;
+}*/
+
+
+/*home.js*/
+.homeMainContent {
+    /*grid-row: 2 / 3;*/
+    color: white;
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    animation: appear 2s ease-in-out;
+}
+
+.restName {
+    flex: 0;
+    margin-bottom: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.name {
+    font-family: josefin;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+.subname {
+    font-family: dancing;
+    font-size: 3rem;
+    margin-bottom: -15px;
+    color:rgb(227, 180, 93);
+    letter-spacing: .2rem;
+}
+
+.menuBtn {
+    flex-basis: auto;
+    padding: 0.7rem;
+    font-size: 1.5rem;
+    background-color: rgb(227, 180, 93);
+    color: black;
+    margin-top: 2.7rem;
+    border-radius: 10px;
+    box-shadow: 2px black;
+    transition: all 1s;
+}
+
+.menuBtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.info {
+    font-size: 1.5rem;
+    color: white;
+    font-style: italic;
+    margin-top: 1.8rem;
+}
+
+.emptyDiv {
+    width: 15rem;
+    border: 2px solid rgb(227, 180, 93);
+}
+
+/*Menu and about page*/
+.menuMainContent,
+.aboutMainContent {
+    height: 100%;
+    background-color: white;
+    /*grid-row: 2 / 3;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    overflow-y: scroll;
+    animation: appear 2s ease-in-out;
+}
+
+.menuMainContent::-webkit-scrollbar {
+    width: 3px;
+}
+
+.menuDiv,
+.aboutDiv {
+    padding-top: 2rem;
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menuHeading,
+.aboutHeading {
+    font-size: 3.5rem;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top:-.6rem;
+}
+
+.menuList {
+    flex: 0;
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 550px 550px;
+    gap: 3rem;
+}
+
+.lot {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 3fr;
+    column-gap: 1rem;
+    row-gap: .7rem;
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.lotTitle {
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: 1.5rem;
+    color: rgb(227, 180, 93);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.lotPic {
+    grid-area: 1 / 1 / 3 / 2;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.lotInfo {
+    grid-area: 2 / 2 / -1 / -1;
+    font-size: 1.3rem;
+    align-self: start;
+}
+
+.emptyDivMenu {
+    width: 45%;
+    border: 2px solid rgb(227, 180, 93);
+}
+
+.manifesto {
+    width: 50%;
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.menuMainContent,
+.aboutMainContent, 
+.homeMainContent {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    /*background-color: lightgray;*/
+    color: black;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: rgb(116, 116, 255);
+}
+
+.contactDiv {
+    width: 500px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.contactLogo {
+   width: 80px;
+   height: 80px;
+}
+
+.contLnk {
+    border-radius: 15px;
+    padding: 5px;
+    transition: all 1s;
+}
+
+.contLnk:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-3px);
+}
