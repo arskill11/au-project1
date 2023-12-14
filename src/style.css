@@ -25,6 +25,36 @@
         background-image: url(/src/img/backgr1.jpg);
     }
 }
+@keyframes fall {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      top: 100vh;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes sway {
+    0% {
+      margin-left: 0;
+    }
+    25% {
+      margin-left: 50px;
+    }
+    50% {
+      margin-left: -50px;
+    }
+    75% {
+      margin-left: 50px;
+    }
+    100% {
+      margin-left: 0;
+    }
+  }
 
 h1, h2, h3, p {
     margin: 0;
@@ -323,3 +353,37 @@ a:hover {
     color: white;
     transform: translateY(-3px);
 }
+
+/*snow*/
+#snow-container {  
+    transition: opacity 500ms;
+    overflow: hidden;
+  }
+  
+  .snow {
+    animation: fall ease-in infinite, sway ease-in-out infinite;
+    color: skyblue;
+    position: absolute;
+  }
+
+  /*timer*/
+  #timer {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #timer p {
+    font-style: italic;
+  }
+  
+  .timer-container {
+    font-size: 3rem;
+  }
+  
+  .timer-container span {
+    white-space: nowrap;
+  }
