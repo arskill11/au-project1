@@ -1,5 +1,6 @@
 import './style.css';
 import { mainContent } from '.';
+import { isBlack } from '.';
 
 function render () {
   const homeMainContent = document.createElement('div');
@@ -74,6 +75,13 @@ function render () {
   mainContent.appendChild(homeMainContent);
   homeMainContent.classList.add('homeMainContent');
 
+  if (isBlack) {
+    document.querySelectorAll('*').forEach(item => {
+      if (!item.classList.contains('darkScheme')) {
+         item.classList.add('darkScheme');
+      }
+    })
+  }
 
   let countdownDate = new Date(2024, 0, 1, 0, 0, 0, 0);
   let countdownDateOne;

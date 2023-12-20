@@ -10,73 +10,130 @@ const menuSection = document.querySelector('#menu');
 const aboutSection = document.querySelector('#about');
 const footer = document.querySelector('.footer');
 const mainContent = document.querySelector('.mainContent');
+const timeline = document.querySelector('.timeline');
+const lightSchemeBtn = document.querySelector('#whiteScheme');
+const darkScheme = document.querySelector('#blackScheme');
+let isBlack = false;
 
 function checkReset () {
-    if (homeSection.getAttribute('class') == 'active') {
-        homeSection.classList.remove('active');
-        homeSection.classList.add('section');
-    }
-    else if (menuSection.getAttribute('class') == 'active') {
-        menuSection.classList.remove('active');
-        menuSection.classList.add('section');
-    }
-    else if (aboutSection.getAttribute('class') == 'active') {
-        aboutSection.classList.remove('active');
-        aboutSection.classList.add('section');
-    }
-    else {return;}
+  if (homeSection.getAttribute('class') == 'active') {
+    homeSection.classList.remove('active');
+    homeSection.classList.add('section');
+  }
+  else if (homeSection.getAttribute('class') == 'active darkScheme') {
+    homeSection.classList.remove('darkScheme');
+    homeSection.classList.remove('active');
+    homeSection.classList.add('section');
+    homeSection.classList.add('darkScheme');
+  }
+  if (menuSection.getAttribute('class') == 'active') {
+    menuSection.classList.remove('active');
+    menuSection.classList.add('section');
+  }
+  else if (menuSection.getAttribute('class') == 'active darkScheme') {
+    menuSection.classList.remove('darkScheme');
+    menuSection.classList.remove('active');
+    menuSection.classList.add('section');
+    menuSection.classList.add('darkScheme');
+  }
+  else if (aboutSection.getAttribute('class') == 'active') {
+    aboutSection.classList.remove('active');
+    aboutSection.classList.add('section');
+  }
+  else if (aboutSection.getAttribute('class') == 'active darkScheme') {
+    aboutSection.classList.remove('darkScheme');
+    aboutSection.classList.remove('active');
+    aboutSection.classList.add('section');
+    aboutSection.classList.add('darkScheme');
+  }
+  else {return;}
 } 
 
 function home () {
-    while (mainContent.hasChildNodes()){
-        mainContent.removeChild(mainContent.lastChild);
-    }
-    checkReset();
-    homeSection.classList.remove('section');
-    homeSection.classList.add('active');
-    renderHome();
+  while (mainContent.hasChildNodes()){
+    mainContent.removeChild(mainContent.lastChild);
+  }
+  checkReset();
+  homeSection.classList.remove('darkScheme');
+  homeSection.classList.remove('section');
+  homeSection.classList.add('active');
+  homeSection.classList.add('darkScheme');
+  renderHome();
 }
 
 function menu () {
-    while (mainContent.hasChildNodes()){
-        mainContent.removeChild(mainContent.lastChild);
-    }
-    checkReset();
-    menuSection.classList.remove('section');
-    menuSection.classList.add('active');
-    renderMenu();
+  while (mainContent.hasChildNodes()){
+    mainContent.removeChild(mainContent.lastChild);
+  }
+  checkReset();
+  menuSection.classList.remove('darkScheme');
+  menuSection.classList.remove('section');
+  menuSection.classList.add('active');
+  menuSection.classList.add('darkScheme');
+  renderMenu();
 }
 
 function about () {
-    while (mainContent.hasChildNodes()){
-        mainContent.removeChild(mainContent.lastChild);
+  while (mainContent.hasChildNodes()){
+    mainContent.removeChild(mainContent.lastChild);
+  }
+  checkReset();
+  aboutSection.classList.remove('darkScheme');
+  aboutSection.classList.remove('section');
+  aboutSection.classList.add('active');
+  aboutSection.classList.add('darkScheme');
+  renderAbout();
+}
+
+function changeSchemeToDark () {
+  lightSchemeBtn.classList.remove('activeBtn');
+  darkScheme.classList.add('activeBtn');
+  const all = document.querySelectorAll('*');
+  all.forEach(item => {
+    if (!item.classList.contains('darkScheme')) {
+      item.classList.add('darkScheme');
     }
-    checkReset();
-    aboutSection.classList.remove('section');
-    aboutSection.classList.add('active');
-    renderAbout();
+  })
+  isBlack = true;
+}
+
+function changeSchemeToLight () {
+  const all = document.querySelectorAll('*');
+  all.forEach(item => {
+    if (item.classList.contains('darkScheme')) {
+      item.classList.remove('darkScheme');
+    }   
+  })
+  isBlack = false;
+  darkScheme.classList.remove('activeBtn');
+  lightSchemeBtn.classList.add('activeBtn');
 }
 
 home();
 
 document.addEventListener('click', (e) => {
-    let target = e.target.getAttribute('id');
-    switch (target) {
-        case "menu": 
-            menu();
-            break;
-        case "menuBtn":
-            menu();
-            break; 
-        case "home":
-            home();
-            break;
-        case "about": 
-            about();
-            break;
-    }
+  let target = e.target.getAttribute('id');
+  switch (target) {
+    case "menu": 
+      menu();
+      break;
+    case "menuBtn":
+      menu();
+      break; 
+    case "home":
+      home();
+      break;
+    case "about": 
+      about();
+      break;
+    case "blackScheme":
+      changeSchemeToDark();
+      break;
+    case "whiteScheme":
+      changeSchemeToLight();
+      break;
+  }
 })
-
 
 /*snow*/
 const snowContainer = document.getElementById("snow-container");
@@ -109,10 +166,8 @@ const createSnow = (num) => {
   }
 }
 
-
 window.addEventListener("load", () => {
   createSnow(30)
 });
 
-
-export { mainContent };
+export { mainContent, isBlack };

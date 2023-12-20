@@ -16,15 +16,6 @@
     }
 }
 
-@keyframes backgrAppear {
-    from {
-        background-image: url(/src/img/academy3.jpg)
-    }
-
-    to {
-        background-image: url(/src/img/backgr1.jpg);
-    }
-}
 @keyframes fall {
     0% {
       opacity: 0;
@@ -72,12 +63,15 @@ html,
 }
 
 .back {
-    background-image: url(/src/img/backgr1.jpg);
+    background-image: url(/src/img/clouds.jpg);
     background-size: cover;
     height: 100%;
     filter: blur(5px);
     -webkit-filter: blur(5px);
-    animation: backgrAppear 2s;
+}
+
+.back.darkScheme {
+  background-image: url(/src/img/backgr1.jpg);
 }
 
 #content {
@@ -91,27 +85,74 @@ html,
 }
 
 .heading {
+    width: 100%;
     grid-row: 1 / 2;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: black;
     border-bottom: 2px solid rgb(227, 180, 93);
     gap: .5rem;
     animation: appear 3s;
+    display: grid;
+    grid-template-columns: 2fr 7fr 2fr;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
     /*background-color: rgb(242, 182, 77);
     /*opacity: 0.5;*/
 }
 
+.heading.darkScheme {
+  color: white;
+}
+
+.navs {
+  display: flex;
+  grid-column: 2 / 3;
+}
+
+.schemes {
+  justify-self: end;
+  grid-column: 3 / 4;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 30px;
+}
+
+.schemes > button {
+  background-color: rgb(231, 231, 231);
+  color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.schemes > button.darkScheme {
+  background-color: rgb(76, 96, 96);
+  color: white;
+}
+
+.schemes > button.activeBtn,
+.schemes > button.activeBtn.darkScheme {
+  background-color: rgb(57, 205, 205);
+  border: 2px solid rgb(89, 89, 89);
+}
+
 .footer {
     grid-row: 3 / 4;
-    background-color: rgb(0, 0, 0, 0.6);
+    background-color: rgba(180, 180, 180, 0.6);
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
     animation: appear 3s;
+}
+
+.footer.darkScheme {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
 }
 
 .section,
@@ -149,7 +190,7 @@ html,
 /*home.js*/
 .homeMainContent {
     /*grid-row: 2 / 3;*/
-    color: white;
+    color: black;
     font-size: 5rem;
     display: flex;
     flex-direction: column;
@@ -157,6 +198,10 @@ html,
     align-items: center;
     border-radius: 15px;
     animation: appear 2s ease-in-out;
+}
+
+.homeMainContent.darkScheme {
+  color: white;
 }
 
 .restName {
@@ -187,24 +232,37 @@ html,
     flex-basis: auto;
     padding: 0.7rem;
     font-size: 1.5rem;
-    background-color: rgb(227, 180, 93);
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     margin-top: 2.7rem;
     border-radius: 10px;
     box-shadow: 2px black;
     transition: all 1s;
 }
 
+.menuBtn.darkScheme {
+  color: white;
+}
+
 .menuBtn:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+}
+
+.menuBtn.darkScheme:hover {
+  background-color: rgb(151, 151, 151);
+  color: rgb(255, 255, 255);
 }
 
 .info {
     font-size: 1.5rem;
-    color: white;
+    color: black;
     font-style: italic;
     margin-top: 1.8rem;
+}
+
+.info.darkScheme {
+  color: white;
 }
 
 .emptyDiv {
@@ -225,6 +283,11 @@ html,
     gap: 1.5rem;
     animation: appear 2s ease-in-out;
     overflow-y: scroll;
+}
+
+.menuMainContent.darkScheme,
+.aboutMainContent.darkScheme {
+  background-color: rgb(106, 106, 106);
 }
 
 .menuMainContent::-webkit-scrollbar {
@@ -250,6 +313,11 @@ html,
     margin-top:-.6rem;
 }
 
+.menuHeading.darkScheme,
+.aboutHeading.darkScheme {
+  color: white;
+}
+
 .menuList {
     flex: 0;
     display: grid;
@@ -269,6 +337,11 @@ html,
     background-color: rgb(250, 250, 250);
     padding: 1.5rem;
     border-radius: 10px;
+}
+
+.lot.darkScheme {
+  background-color: rgb(122, 122, 122);
+  color: white;
 }
 
 .lotTitle {
@@ -322,13 +395,25 @@ a {
     font-weight: 900;
 }
 
+a.darkScheme {
+  color: white;
+}
+
 a:visited {
     color: black;
     text-decoration: none;
 }
 
+a.darkScheme:visited {
+  color: white;
+}
+
 a:hover {
     background-color: rgb(116, 116, 255);
+}
+
+a.darkScheme:hover {
+  background-color: rgb(172, 172, 255);
 }
 
 .contactDiv {
@@ -399,9 +484,13 @@ a:hover {
     padding: 50px 0;
     margin-bottom: 40px;  
     flex-shrink: 0;
-    width: 90%;
+    width: 80%;
     border: 2px solid black;
     border-radius: 20px;;
+  }
+
+  section.timeline.on.darkScheme {
+    background: rgb(83, 123, 110);
   }
 
   .timeline {
@@ -423,6 +512,10 @@ a:hover {
     width: 160px;
     height: 3px;
     background: rgb(116, 116, 224);
+}
+
+.timeline ol li.darkScheme {
+  background-color: rgb(152, 152, 227);;
 }
   
   .timeline ol li:last-child {
@@ -456,6 +549,11 @@ a:hover {
     color: black;
     background: white;
 }
+
+.timeline ol li div.darkScheme {
+  background-color: rgb(159, 158, 158);
+  color: white;
+}
   
   .timeline ol li div::before {
     content: "";
@@ -470,6 +568,7 @@ a:hover {
   .timeline ol li:nth-child(odd) div {
     top: -16px;
     transform: translateY(-100%);
+    border-radius: 15px 0;
   }
   
   .timeline ol li:nth-child(odd) div::before {
@@ -507,6 +606,18 @@ a:hover {
   .timeline .arrows .arrow__prev {
     margin-right: 20px;
   }
+
+  .timeline .arrows .arrow__prev,
+  .timeline .arrows .arrow__next {
+    background: none;
+    border: none;
+  }
+
+.timelineHeader {
+  font-size: 4rem;
+  text-align: center;
+}
+
   
   .timeline .disabled {
     opacity: 0.5;
